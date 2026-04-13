@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Templates — Notivate</title>
+  <meta name="description" content="Browse all Notivate Notion templates — productivity, student, and business templates. Free and paid options available." />
+  <meta property="og:title" content="All Templates — Notivate" />
+  <meta property="og:description" content="Browse all Notion templates by Notivate. Filter by category, price, and more." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="https://gumroad.com/js/gumroad.js" defer></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Noti<span>vate</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="templates.html" class="btn btn-primary btn-sm">Browse Templates</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="templates.html">Templates</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="templates.html" class="btn btn-primary">Browse Templates</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" id="page-header">
+    <div class="container">
+      <div class="section-label" style="margin: 0 auto 16px;">
+        <i data-lucide="layout-template" style="width:12px;height:12px;"></i>
+        Template Library
+      </div>
+      <h1>All Templates</h1>
+      <p>Find the perfect Notion template for your workflow. Filtered and ready for your life.</p>
+    </div>
+  </header>
+
+  <!-- TEMPLATES SECTION -->
+  <section class="section-sm" id="templates-section" aria-label="Template listings">
+    <div class="container">
+
+      <!-- Trust Row -->
+      <div class="trust-row">
+        <div class="trust-item">
+          <i data-lucide="zap" style="width:15px;height:15px;"></i>
+          Instant download
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+          7-day money back guarantee
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <i data-lucide="refresh-cw" style="width:15px;height:15px;"></i>
+          Free lifetime updates
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <i data-lucide="lock" style="width:15px;height:15px;"></i>
+          Secure checkout via Gumroad
+        </div>
+        <div class="payment-icons">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+          <span class="payment-icon">AMEX</span>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" id="filter-bar">
+        <div class="filter-buttons" id="filter-buttons" role="group" aria-label="Filter templates">
+          <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+          <button class="filter-btn" data-filter="free" id="filter-free">Free</button>
+          <button class="filter-btn" data-filter="paid" id="filter-paid">Paid</button>
+          <button class="filter-btn" data-filter="productivity" id="filter-productivity">Productivity</button>
+          <button class="filter-btn" data-filter="student" id="filter-student">Student</button>
+          <button class="filter-btn" data-filter="business" id="filter-business">Business</button>
+        </div>
+        <div class="template-count" id="template-count" aria-live="polite"></div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="templates-grid" id="templates-grid">
+
+        <!-- 1: Productivity OS -->
+        <article class="template-card" data-category="productivity" data-price="paid" data-reveal id="card-productivity-os">
+          <div class="card-image-wrap">
+            <img src="assets/images/template-productivity.webp" alt="Productivity OS Notion template preview" loading="lazy" />
+            <span class="card-badge badge-paid">Paid</span>
+            <span class="badge-category">Productivity</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Productivity OS</div>
+            <div class="card-desc">Your complete life command center. Tasks, projects, habits, daily reviews, and goals — all in one beautiful dashboard.</div>
+            <div class="card-meta">
+              <div class="card-sales" style="color:var(--text-muted);font-size:0.9rem;">New release!</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">$19</div>
+            <div class="card-actions">
+              <a href="template-1.html" class="btn btn-outline btn-sm" id="t1-preview-btn">Preview</a>
+              <a href="https://gumroad.com/l/[product-id]" class="btn btn-primary btn-sm gumroad-button" id="t1-buy-btn" target="_blank" rel="noopener">Get it on Gumroad</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2: Student Planner -->
+        <article class="template-card" data-category="student" data-price="free" data-reveal id="card-student-planner">
+          <div class="card-image-wrap">
+            <img src="assets/images/template-student.webp" alt="Student Planner Pro Notion template preview" loading="lazy" />
+            <span class="card-badge badge-free">Free</span>
+            <span class="badge-category">Student</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Student Planner Pro</div>
+            <div class="card-desc">Track courses, assignments, exams, and grades. Built for students who want to stay ahead of deadlines effortlessly.</div>
+            <div class="card-meta">
+              <div class="card-sales" style="color:var(--text-muted);font-size:0.9rem;">New release!</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price free">Free</div>
+            <div class="card-actions">
+              <a href="template-2.html" class="btn btn-outline btn-sm" id="t2-preview-btn">Preview</a>
+              <a href="https://gumroad.com/l/[product-id]" class="btn btn-accent btn-sm" id="t2-get-btn" target="_blank" rel="noopener">Get Free</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3: Business OS -->
+        <article class="template-card" data-category="business" data-price="paid" data-reveal id="card-business-os">
+          <div class="card-image-wrap">
+            <img src="assets/images/template-business.webp" alt="Freelancer Business OS Notion template preview" loading="lazy" />
+            <span class="card-badge badge-paid">Paid</span>
+            <span class="badge-category">Business</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Freelancer Business OS</div>
+            <div class="card-desc">Run your freelance business from one place. Client CRM, project tracker, invoices, proposals, and revenue dashboard.</div>
+            <div class="card-meta">
+              <div class="card-sales" style="color:var(--text-muted);font-size:0.9rem;">New release!</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">$29</div>
+            <div class="card-actions">
+              <a href="template-3.html" class="btn btn-outline btn-sm" id="t3-preview-btn">Preview</a>
+              <a href="https://gumroad.com/l/[product-id]" class="btn btn-primary btn-sm gumroad-button" id="t3-buy-btn" target="_blank" rel="noopener">Get it on Gumroad</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4: Coming Soon -->
+        <article class="template-card coming-soon" data-category="productivity" data-price="paid" id="card-coming-soon-1">
+          <div class="coming-soon-overlay">
+            <span class="coming-soon-label">🔒 Coming Soon</span>
+          </div>
+          <div class="card-image-wrap" style="background:var(--bg-secondary);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+            <i data-lucide="image" style="width:40px;height:40px;color:var(--text-faint);"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Second Brain OS</div>
+            <div class="card-desc">A Zettelkasten-inspired knowledge base to capture, connect, and recall everything you learn.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">$24</div>
+          </div>
+        </article>
+
+        <!-- 5: Coming Soon -->
+        <article class="template-card coming-soon" data-category="student" data-price="paid" id="card-coming-soon-2">
+          <div class="coming-soon-overlay">
+            <span class="coming-soon-label">🔒 Coming Soon</span>
+          </div>
+          <div class="card-image-wrap" style="background:var(--bg-secondary);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+            <i data-lucide="image" style="width:40px;height:40px;color:var(--text-faint);"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Research Paper Manager</div>
+            <div class="card-desc">Organize sources, bibliography, notes, and writing progress for academic work.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">$14</div>
+          </div>
+        </article>
+
+        <!-- 6: Coming Soon -->
+        <article class="template-card coming-soon" data-category="business" data-price="paid" id="card-coming-soon-3">
+          <div class="coming-soon-overlay">
+            <span class="coming-soon-label">🔒 Coming Soon</span>
+          </div>
+          <div class="card-image-wrap" style="background:var(--bg-secondary);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+            <i data-lucide="image" style="width:40px;height:40px;color:var(--text-faint);"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Content Creator Hub</div>
+            <div class="card-desc">Content calendar, social media planner, ideas vault, analytics tracker for creators.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">$22</div>
+          </div>
+        </article>
+
+      </div><!-- /templates-grid -->
+
+      <!-- Gumroad/Etsy note -->
+      <div style="text-align:center; padding: 48px 0 0; color: var(--text-muted); font-size:0.9rem;">
+        Also available on 
+        <a href="#" style="color:var(--primary);font-weight:600;">Fiverr</a> 
+        &nbsp;·&nbsp; Secure payments via Gumroad &nbsp;·&nbsp;
+        <span style="color:#4ADE80;">7-day money back guarantee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <h2>Not sure which template<br/><span class="gradient-text">is right for you?</span></h2>
+        <p>Reach out and I'll personally help you find the perfect fit for your workflow.</p>
+        <div class="cta-banner-btns">
+          <a href="contact.html" class="btn btn-primary" id="templates-contact-btn">
+            <i data-lucide="mail" style="width:17px;height:17px;"></i>
+            Get in touch
+          </a>
+          <a href="about.html" class="btn btn-outline" id="templates-about-btn">Learn about me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Noti<span>vate</span></a>
+          <p class="footer-tagline">Notion templates that actually work — for creators, students, and hustlers.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a>
+            <a href="https://gumroad.com/l/[product-id]" class="social-icon" aria-label="Gumroad" target="_blank" rel="noopener"><i data-lucide="shopping-bag" style="width:16px;height:16px;"></i></a>
+            <a href="#" class="social-icon" aria-label="Fiverr"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></a>
+            <a href="mailto:notivate.tech@gmail.com" class="social-icon" aria-label="Email"><i data-lucide="mail" style="width:16px;height:16px;"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="templates.html">Templates</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Templates</div>
+          <ul class="footer-links">
+            <li><a href="template-1.html">Productivity OS</a></li>
+            <li><a href="template-2.html">Student Planner</a></li>
+            <li><a href="template-3.html">Business OS</a></li>
+            <li><a href="templates.html">View all →</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <ul class="footer-links">
+            <li><a href="https://gumroad.com/l/[product-id]" target="_blank" rel="noopener">Gumroad Shop</a></li>
+            <li><a href="#">Fiverr</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="mailto:notivate.tech@gmail.com">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Notivate. All rights reserved.</span>
+        <span>Made with ❤️ for Notion lovers</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/templates.js"></script>
+  <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+</body>
+</html>
+
