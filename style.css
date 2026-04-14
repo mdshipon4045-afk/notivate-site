@@ -160,7 +160,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* =========================================================
-   NAVBAR
+   NAVBAR — Glassmorphism + Floating Pill
    ========================================================= */
 .navbar {
   position: fixed;
@@ -171,14 +171,18 @@ img { display: block; max-width: 100%; }
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background: var(--bg);
-  transition: background var(--transition), box-shadow var(--transition);
+  /* Glassmorphism */
+  background: rgba(250, 248, 244, 0.72);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(250, 248, 244, 0.96);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 12px rgba(28, 26, 22, 0.06);
+  background: rgba(250, 248, 244, 0.92);
+  border-bottom: 1px solid rgba(28, 26, 22, 0.08);
+  box-shadow: 0 4px 24px rgba(28, 26, 22, 0.07);
 }
 
 .navbar .container {
@@ -186,6 +190,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }
 
 .nav-logo {
@@ -194,37 +199,81 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
 }
 .nav-logo span { color: var(--primary); }
 
+/* Center-aligned nav links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 4px;
   list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Contain the floating pill */
+  padding: 4px;
 }
+
+/* Floating pill that slides behind hovered item */
+.nav-pill {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 34px;
+  background: rgba(196, 96, 58, 0.11);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.nav-links li { position: relative; z-index: 1; }
+
 .nav-links a {
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-muted);
-  transition: color var(--transition);
+  transition: color 0.3s ease, transform 0.15s ease;
   position: relative;
+  padding: 6px 14px;
+  display: inline-block;
+  z-index: 1;
+  will-change: transform;
 }
-.nav-links a::after {
+/* Remove old underline indicator */
+.nav-links a::after { display: none; }
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--primary); }
+
+/* Active item: always show a subtle pill */
+.nav-links a.active::before {
   content: '';
   position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: var(--primary);
-  border-radius: 2px;
-  transition: width var(--transition);
+  inset: 0;
+  background: rgba(196, 96, 58, 0.09);
+  border-radius: var(--radius-pill);
+  z-index: -1;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-.nav-cta { display: flex; align-items: center; gap: 16px; }
+/* Staggered fade-in on page load */
+@keyframes navLinkFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* The pill div is inserted as first child, so li:nth-of-type matches correctly */
+.nav-links li:nth-of-type(1) a { animation: navLinkFadeIn 0.45s ease both 0.05s; }
+.nav-links li:nth-of-type(2) a { animation: navLinkFadeIn 0.45s ease both 0.13s; }
+.nav-links li:nth-of-type(3) a { animation: navLinkFadeIn 0.45s ease both 0.21s; }
+.nav-links li:nth-of-type(4) a { animation: navLinkFadeIn 0.45s ease both 0.29s; }
+
+.nav-cta { display: flex; align-items: center; gap: 16px; position: relative; z-index: 1; }
 
 /* Hamburger */
 .hamburger {
@@ -249,23 +298,27 @@ img { display: block; max-width: 100%; }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
-/* Mobile nav */
+/* Mobile nav — glass + bounce */
 .mobile-nav {
   display: none;
   position: fixed;
   top: var(--nav-height);
   left: 0;
   right: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: rgba(250, 248, 244, 0.94);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(28, 26, 22, 0.07);
   padding: 20px 24px;
   flex-direction: column;
   gap: 4px;
   z-index: 999;
-  animation: slideDown 0.22s ease;
-  box-shadow: 0 8px 24px rgba(28, 26, 22, 0.08);
+  box-shadow: 0 12px 32px rgba(28, 26, 22, 0.10);
 }
-.mobile-nav.open { display: flex; }
+.mobile-nav.open {
+  display: flex;
+  animation: mobileNavBounce 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
 .mobile-nav a {
   padding: 12px 16px;
   font-size: 1rem;
@@ -273,13 +326,27 @@ img { display: block; max-width: 100%; }
   color: var(--text-muted);
   border-radius: var(--radius-sm);
   transition: var(--transition);
+  opacity: 0;
+  animation: none;
 }
+.mobile-nav.open a:nth-child(1) { animation: mobileNavItemFade 0.32s ease both 0.08s; }
+.mobile-nav.open a:nth-child(2) { animation: mobileNavItemFade 0.32s ease both 0.14s; }
+.mobile-nav.open a:nth-child(3) { animation: mobileNavItemFade 0.32s ease both 0.20s; }
+.mobile-nav.open a:nth-child(4) { animation: mobileNavItemFade 0.32s ease both 0.26s; }
+.mobile-nav.open a:nth-child(5) { animation: mobileNavItemFade 0.32s ease both 0.32s; }
 .mobile-nav a:hover { color: var(--text-primary); background: var(--bg-secondary); }
 .mobile-nav .btn { width: 100%; justify-content: center; margin-top: 8px; }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes mobileNavBounce {
+  0%   { opacity: 0; transform: translateY(-18px); }
+  55%  { opacity: 1; transform: translateY(5px); }
+  75%  { transform: translateY(-2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobileNavItemFade {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 /* =========================================================
