@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealEls.forEach((el, i) => {
       // Cap stagger at 5 items so it doesn't feel sluggish in large grids
-      const stagger = Math.min(i % 6, 5) * 0.09;
+      const stagger = Math.min(i, 5) * 0.09;
       el.style.setProperty('--reveal-delay', `${stagger}s`);
       observer.observe(el);
     });
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pill = document.createElement('div');
     pill.className = 'nav-pill';
     pill.setAttribute('aria-hidden', 'true');
-    navLinksList.insertBefore(pill, navLinksList.firstChild);
+    navLinksList.appendChild(pill);
 
     const movePillTo = (link) => {
       const linkRect = link.getBoundingClientRect();
