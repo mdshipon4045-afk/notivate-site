@@ -271,32 +271,45 @@ img { display: block; max-width: 100%; }
 /* Hamburger */
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 14px;
   border: 1px solid rgba(255, 255, 255, 0.38);
-  border-radius: 12px;
+  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.34);
   box-shadow: 0 6px 16px rgba(28, 26, 22, 0.08);
   z-index: 1001;
   transition: background var(--transition), border-color var(--transition);
 }
-.hamburger span {
+.hamburger-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hamburger-icon span {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: var(--text-primary);
   border-radius: 2px;
   transition: var(--transition);
 }
+.hamburger-label {
+  display: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
 .hamburger:hover {
   background: rgba(255, 255, 255, 0.52);
   border-color: rgba(196, 96, 58, 0.25);
 }
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+.hamburger.open .hamburger-icon span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open .hamburger-icon span:nth-child(2) { opacity: 0; }
+.hamburger.open .hamburger-icon span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
 /* Mobile nav */
 .mobile-nav {
@@ -1057,6 +1070,12 @@ body.menu-open { overflow: hidden; }
   padding-top: calc(var(--nav-height) + 56px);
   padding-bottom: 72px;
 }
+.about-hero .section-label {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
 .about-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1254,9 +1273,11 @@ body.menu-open { overflow: hidden; }
   }
   .navbar .container {
     grid-template-columns: auto 1fr auto;
+    gap: 10px;
   }
   .nav-links, .nav-cta { display: none; }
   .hamburger            { display: flex; }
+  .hamburger-label      { display: inline-block; }
   .templates-grid       { grid-template-columns: 1fr; }
   .testimonials-grid    { grid-template-columns: 1fr; }
   .footer-grid          { grid-template-columns: 1fr; gap: 28px; }

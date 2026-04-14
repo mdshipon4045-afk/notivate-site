@@ -76,18 +76,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const burger    = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
   if (burger && mobileNav) {
+    const burgerLabel = burger.querySelector('.hamburger-label');
     burger.setAttribute('aria-expanded', 'false');
 
     const closeMobileNav = () => {
       burger.classList.remove('open');
       mobileNav.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
+      if (burgerLabel) burgerLabel.textContent = 'Menu';
       document.body.classList.remove('menu-open');
     };
     const openMobileNav = () => {
       burger.classList.add('open');
       mobileNav.classList.add('open');
       burger.setAttribute('aria-expanded', 'true');
+      if (burgerLabel) burgerLabel.textContent = 'Close';
       document.body.classList.add('menu-open');
     };
 
