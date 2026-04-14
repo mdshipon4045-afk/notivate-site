@@ -23,19 +23,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── Sliding nav pill + magnetic hover ─────────────────
+  const navLinks = document.getElementById('nav-links');
+  if (navLinks) {
+    const links = Array.from(navLinks.querySelectorAll('a'));
+    const pill = document.createElement('span');
+    pill.className = 'nav-pill';
+    navLinks.prepend(pill);
+
+    let activeLink = links.find(link => link.classList.contains('active')) || links[0] || null;
+
+    const movePill = target => {
+      if (!target) return;
+      const navRect = navLinks.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const x = targetRect.left - navRect.left;
+
+      pill.style.width = `${targetRect.width}px`;
+      pill.style.transform = `translateX(${x}px)`;
+      pill.classList.add('visible');
+    };
+
+    const resetMagnetic = link => {
+      link.style.transform = 'translate3d(0, 0, 0)';
+    };
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => movePill(link));
+
+      link.addEventListener('mousemove', e => {
+        const rect = link.getBoundingClientRect();
+        const strength = 0.18;
+        const x = (e.clientX - (rect.left + rect.width / 2)) * strength;
+        const y = (e.clientY - (rect.top + rect.height / 2)) * strength;
+        link.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+
+      link.addEventListener('mouseleave', () => resetMagnetic(link));
+      link.addEventListener('focus', () => movePill(link));
+    });
+
+    navLinks.addEventListener('mouseleave', () => {
+      movePill(activeLink);
+      links.forEach(resetMagnetic);
+    });
+
+    window.addEventListener('resize', () => movePill(activeLink));
+    requestAnimationFrame(() => movePill(activeLink));
+  }
+
   // ── Hamburger menu ────────────────────────────────────
   const burger    = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
   if (burger && mobileNav) {
+    burger.setAttribute('aria-expanded', 'false');
+
     const closeMobileNav = () => {
       burger.classList.remove('open');
       mobileNav.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
     };
     const openMobileNav = () => {
       burger.classList.add('open');
       mobileNav.classList.add('open');
       burger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
     };
 
     burger.addEventListener('click', () => {
@@ -61,6 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
         closeMobileNav();
         burger.focus();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        closeMobileNav();
       }
     });
   }
