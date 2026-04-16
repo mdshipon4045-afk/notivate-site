@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const templateCards = document.querySelectorAll('.template-card[data-category]');
   const countEl = document.getElementById('template-count');
 
+  const setActiveFilter = (button) => {
+    filterButtons.forEach(btn => {
+      const isActive = btn === button;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
   function updateCount(available, comingSoon) {
     if (!countEl) return;
     let text = `Showing <strong>${available}</strong> available template${available !== 1 ? 's' : ''}`;
@@ -53,14 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   filterButtons.forEach(btn => {
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
     btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      setActiveFilter(btn);
       filterTemplates(btn.dataset.filter);
     });
   });
 
   // Init count
+  const defaultActiveButton = Array.from(filterButtons).find(btn => btn.classList.contains('active')) || filterButtons[0];
+  if (defaultActiveButton) {
+    setActiveFilter(defaultActiveButton);
+  }
   filterTemplates('all');
 
   // CSS for fadeIn

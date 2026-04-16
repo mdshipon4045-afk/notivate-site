@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const isPremiumEnabled = document.body.getAttribute('data-premium') === 'true';
     if (!isPremiumEnabled) return;
 
+    const canUseHoverEffects = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
     // Apply scroll reveal utility classes to both homepage and templates library cards
     const floatingSections = document.querySelectorAll('#featured, #templates-section');
     floatingSections.forEach(section => {
@@ -30,33 +32,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#featured .scroll-fade-card, #templates-section .scroll-fade-card').forEach(el => tlObserver.observe(el));
 
     // 2. Continuous 3D Hover & Glow tracking
-    document.addEventListener('mousemove', (e) => {
-        const activeCard = Array.from(document.querySelectorAll('#featured .template-card:hover, #templates-section .template-card:hover')).pop();
-        if (activeCard) {
-            const rect = activeCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    if (canUseHoverEffects) {
+        document.addEventListener('mousemove', (e) => {
+            const activeCard = Array.from(document.querySelectorAll('#featured .template-card:hover, #templates-section .template-card:hover')).pop();
+            if (activeCard) {
+                const rect = activeCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-            activeCard.style.setProperty('--mouse-x', `${x}px`);
-            activeCard.style.setProperty('--mouse-y', `${y}px`);
+                activeCard.style.setProperty('--mouse-x', `${x}px`);
+                activeCard.style.setProperty('--mouse-y', `${y}px`);
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -15; 
-            const rotateY = ((x - centerX) / centerX) * 15;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
 
-            activeCard.style.setProperty('--rotate-x', `${rotateX}deg`);
-            activeCard.style.setProperty('--rotate-y', `${rotateY}deg`);
-        }
-    });
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
 
-    // Reset loop
-    document.querySelectorAll('#featured .template-card, #templates-section .template-card').forEach(card => {
-        card.addEventListener('mouseleave', () => {
-             card.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0) rotateY(0)';
-             card.style.setProperty('--rotate-x', '0deg');
-             card.style.setProperty('--rotate-y', '0deg');
+                activeCard.style.setProperty('--rotate-x', `${rotateX}deg`);
+                activeCard.style.setProperty('--rotate-y', `${rotateY}deg`);
+            }
         });
-    });
+
+        // Reset loop
+        document.querySelectorAll('#featured .template-card, #templates-section .template-card').forEach(card => {
+            card.addEventListener('mouseleave', () => {
+                 card.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0) rotateY(0)';
+                 card.style.setProperty('--rotate-x', '0deg');
+                 card.style.setProperty('--rotate-y', '0deg');
+            });
+        });
+    }
 });

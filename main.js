@@ -94,8 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('menu-open');
     };
 
-    burger.addEventListener('click', () => {
+    const toggleMobileNav = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       burger.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    };
+
+    burger.addEventListener('pointerup', toggleMobileNav);
+
+    burger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        toggleMobileNav(e);
+      }
     });
 
     // Close when a nav link is clicked
@@ -105,9 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close when clicking outside
     document.addEventListener('click', e => {
-      if (mobileNav.classList.contains('open') &&
-          !navbar.contains(e.target) &&
-          !mobileNav.contains(e.target)) {
+      const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+      const clickedInsideMenu = path.includes(burger) || path.includes(mobileNav) || (navbar && path.includes(navbar));
+
+      if (mobileNav.classList.contains('open') && !clickedInsideMenu) {
         closeMobileNav();
       }
     });
