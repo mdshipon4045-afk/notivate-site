@@ -1009,17 +1009,39 @@ body.menu-open { overflow: hidden; }
 
 /* Detail body */
 .detail-body { padding-bottom: 80px; }
-.detail-body .container { display: grid; grid-template-columns: 1fr 400px; gap: 56px; }
+.detail-body .container { display: block; }
 
 .detail-content-grid {
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 64px;
+  grid-template-columns: 1fr;
+  gap: 52px;
   align-items: start;
+}
+
+.detail-content-grid > div:last-child {
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.detail-content-grid > div:last-child > div {
+  position: static;
+}
+
+.detail-content-grid > div:last-child h3 {
+  text-align: center;
+}
+
+.detail-content-grid > div:last-child > div > div {
+  align-items: flex-start;
 }
 
 .content-section { margin-bottom: 48px; }
 .content-section h3 { margin-bottom: 18px; font-size: 1.4rem; }
+
+#whats-included h2 {
+  font-size: 1.9rem !important;
+  margin-bottom: 22px !important;
+}
 
 .feature-list { display: flex; flex-direction: column; gap: 14px; }
 .feature-item {
@@ -1028,10 +1050,11 @@ body.menu-open { overflow: hidden; }
 }
 .feature-item svg { color: var(--primary); flex-shrink: 0; margin-top: 2px; }
 
-.included-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.included-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 .included-list li {
   display: flex; align-items: center; gap: 10px;
-  font-size: 0.9rem; color: var(--text-secondary);
+  font-size: 0.98rem; color: var(--text-secondary);
+  line-height: 1.8;
 }
 .included-list li::before {
   content: '✓';
@@ -1261,8 +1284,7 @@ body.menu-open { overflow: hidden; }
   .footer-grid         { grid-template-columns: 1fr 1fr; }
   .detail-grid         { grid-template-columns: 1fr; }
   .detail-sidebar      { position: static; }
-  .detail-content-grid  { grid-template-columns: 1fr; gap: 36px; }
-  .detail-body .container { grid-template-columns: 1fr; }
+  .detail-content-grid  { gap: 40px; }
   #detail-body .detail-content-grid > div:last-child > div { position: static !important; top: auto !important; }
   .about-grid          { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .about-bio           { margin: 0 auto 28px; }
@@ -1304,6 +1326,7 @@ body.menu-open { overflow: hidden; }
   .trust-row            { flex-direction: column; align-items: flex-start; }
   .payment-icons        { margin-left: 0; }
   .story-card           { padding: 28px 24px; }
+  #whats-included h2   { font-size: 1.7rem !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
