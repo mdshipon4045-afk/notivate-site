@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    NOTIVATE — Global Design System (Warm Light Edition)
    ========================================================= */
 
@@ -1011,6 +1011,13 @@ body.menu-open { overflow: hidden; }
 .detail-body { padding-bottom: 80px; }
 .detail-body .container { display: grid; grid-template-columns: 1fr 400px; gap: 56px; }
 
+.detail-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: start;
+}
+
 .content-section { margin-bottom: 48px; }
 .content-section h3 { margin-bottom: 18px; font-size: 1.4rem; }
 
@@ -1072,9 +1079,9 @@ body.menu-open { overflow: hidden; }
 }
 .about-hero .section-label {
   display: flex;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  width: max-content;
+  margin: 0 auto 32px;
+  justify-content: center;
 }
 .about-grid {
   display: grid;
@@ -1254,7 +1261,9 @@ body.menu-open { overflow: hidden; }
   .footer-grid         { grid-template-columns: 1fr 1fr; }
   .detail-grid         { grid-template-columns: 1fr; }
   .detail-sidebar      { position: static; }
+  .detail-content-grid  { grid-template-columns: 1fr; gap: 36px; }
   .detail-body .container { grid-template-columns: 1fr; }
+  #detail-body .detail-content-grid > div:last-child > div { position: static !important; top: auto !important; }
   .about-grid          { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .about-bio           { margin: 0 auto 28px; }
   .stat-boxes          { justify-content: center; }
@@ -1287,6 +1296,8 @@ body.menu-open { overflow: hidden; }
   .cta-banner-inner     { padding: 40px 24px; }
   .contact-grid .container,
   .contact-grid > .container { grid-template-columns: 1fr !important; }
+  #detail-body .detail-content-grid > div:last-child > div { position: static !important; top: auto !important; }
+  .profile-photo        { width: 170px; height: 220px; font-size: 3.6rem; }
   .hero-ctas            { flex-direction: column; }
   .hero-ctas .btn       { width: 100%; justify-content: center; }
   .filter-bar           { flex-direction: column; align-items: flex-start; }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,10 +11,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css" />
+  <!-- Premium Theme Toggle -->
+  <link rel="stylesheet" href="css/premium-theme.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
   <script src="https://gumroad.com/js/gumroad.js" defer></script>
 </head>
-<body>
+<body data-premium="true">
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
@@ -66,10 +68,7 @@
           Instant download
         </div>
         <div class="trust-divider"></div>
-        <div class="trust-item">
-          <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
-          7-day money back guarantee
-        </div>
+        
         <div class="trust-divider"></div>
         <div class="trust-item">
           <i data-lucide="refresh-cw" style="width:15px;height:15px;"></i>
@@ -229,9 +228,9 @@
       <!-- Gumroad/Etsy note -->
       <div style="text-align:center; padding: 48px 0 0; color: var(--text-muted); font-size:0.9rem;">
         Also available on 
-        <a href="#" style="color:var(--primary);font-weight:600;">Fiverr</a> 
+        <a href="#" style="color:var(--primary);font-weight:600;">Gumroad</a> 
         &nbsp;·&nbsp; Secure payments via Gumroad &nbsp;·&nbsp;
-        <span style="color:#4ADE80;">7-day money back guarantee</span>
+        
       </div>
     </div>
   </section>
@@ -289,7 +288,7 @@
           <div class="footer-col-title">Connect</div>
           <ul class="footer-links">
             <li><a href="https://gumroad.com/l/[product-id]" target="_blank" rel="noopener">Gumroad Shop</a></li>
-            <li><a href="#">Fiverr</a></li>
+            <li><a href="#">Gumroad</a></li>
             <li><a href="#">Twitter / X</a></li>
             <li><a href="mailto:notivate.tech@gmail.com">Email me</a></li>
           </ul>
@@ -304,7 +303,26 @@
 
   <script src="js/main.js"></script>
   <script src="js/templates.js"></script>
-  <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+  <!-- Premium Feature Script -->
+  <script src="js/premium-interactions.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function() { if (typeof lucide !== "undefined") { lucide.createIcons(); } });</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

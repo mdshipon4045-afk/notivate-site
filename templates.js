@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    templates.js — Filter Logic for Templates Page
    ========================================================= */
 
@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterTemplates(filter) {
     let availableCount = 0;
     let comingSoonCount = 0;
-    
+
     templateCards.forEach(card => {
       const categories = card.dataset.category.split(' ');
       const price = card.dataset.price;
       const isComingSoon = card.classList.contains('coming-soon');
       let show = false;
-      
+
       if (filter === 'all') {
         show = true;
       } else if (filter === 'free') {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         show = categories.includes(filter);
       }
-      
+
       if (show) {
         card.style.display = '';
         card.style.animation = 'fadeIn 0.3s ease';

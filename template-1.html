@@ -11,10 +11,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/premium-theme.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
   <script src="https://gumroad.com/js/gumroad.js" defer></script>
 </head>
-<body>
+<body data-premium="true">
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
@@ -76,7 +77,7 @@
             </div>
             <div style="display:flex;align-items:center;gap:7px;font-size:0.82rem;color:#4ADE80;">
               <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
-              7-day guarantee
+              Instant access
             </div>
           </div>
         </div>
@@ -107,7 +108,7 @@
             </div>
             <div class="sidebar-guarantee">
               <i data-lucide="shield-check" style="width:16px;height:16px;color:#4ADE80;flex-shrink:0;"></i>
-              7-day money back guarantee — no questions asked
+              Instant access after purchase
             </div>
             <div class="sidebar-meta-list">
               <div class="sidebar-meta-item">
@@ -140,7 +141,7 @@
   <!-- DETAIL BODY -->
   <section class="detail-body" id="detail-body">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 420px;gap:64px;">
+      <div class="detail-content-grid">
 
         <!-- Main Content -->
         <div>
@@ -265,7 +266,7 @@
                   <i data-lucide="plus" class="faq-icon" style="width:18px;height:18px;"></i>
                 </div>
                 <div class="faq-answer">
-                  7-day money back guarantee, no questions asked. If you're not happy for any reason, just email me at notivate.tech@gmail.com and I'll process a full refund promptly.
+                  Instant access after purchase. You can contact notivate.tech@gmail.com for support.
                 </div>
               </div>
 
@@ -354,7 +355,8 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+  <script src="js/premium-interactions.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function() { if (typeof lucide !== "undefined") { lucide.createIcons(); } });</script>
 </body>
 </html>
 
